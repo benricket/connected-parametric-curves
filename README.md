@@ -3,6 +3,11 @@ Simple python program to generate figures based off of connecting points of para
 
 This is a set of small programs I wrote primarily last November after seeing an example of connected Lissajous curves at <https://www.bit-101.com/blog/2022/11/coding-curves-04-lissajous-curves/> (The author later did a post on roulette curves and other examples, but I wrote this program after reading the post on Lissajous curves)
 
+The basic idea is as follows: 
+- Take a number of points, a parametric function, and the parameters
+- Evenly distributed over a certain interval, generate that number of points on the function. After every point, change the parameters by a random value times a randomness parameter. Adjust each point’s coordinates by a random value times a random error parameter.
+- Iterate over all pairs of points with a nested array. If the Euclidean distance is small enough, draw a line connecting them. The color of the line is sampled from a set of logarithmically spaced points on a colormap, so that very close points end up bright colors.
+
 My first project (organizedLissajous) did the same random changes to parameters, but also included random variation off of the target position (so the points could jitter with the overall shape the same) and also varied connecting line width and color based on distance, using the matplotlib library's given colormaps.
 
 ![My first project](https://github.com/benricket/parametric-curve-gallery/blob/348df617bf645fb9ebf897a43d684eef57b41314/Screen%20Shot%202022-11-27%20at%2011.00.13%20PM.png)
